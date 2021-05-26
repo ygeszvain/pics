@@ -6,20 +6,21 @@
 ## Bringing the FIS Merchant (Vantiv/WorldPay ) and FIS Issuing together with advanced data analytics
 
 #### High Level Design
-![Design Image](code/Arch.PNG)
+![Design Image](code/Arch.PNG =100x20)
 
--  Opportunity to promote FIS merchant's on the FIS issuer/ FI's.
--  Market penetration for FIS Merchant in areas with strong issuer influence.
--  Ability for FI's to provide customized and personalized offers to their customers.
+- Create potential programs to offer  merchant incentives to issuer customers to drive increased volume for both merchant and issuing customers.
+- Identify FIS merchant customers with low penetration/volumes in the FIS issuer base for a given zip code.
+- Ability for FI's to provide customized and personalized offers to their customers.
+- Using machine learning prediction algorithms across both merchant and issuing data sets to identify emerging merchants.
 
 ## Solution Features
 
--  Data Merging 
--  Data Cleansing
--  Predictive analytics
--  Recommendations 
--  Visualization
--  API
+- Data Merging 
+- Data Cleansing
+- Predictive analytics
+- Recommendations 
+- Visualization
+- API
 
 ## Data pipeline and framework
 
@@ -28,22 +29,22 @@ S3 -> Snowpipe -> Snowflake Table -> Kedro Data Engineering/Data Science Pipelin
 ### Technologies and Architecture  
 
 - Snowflake and Hadoop
-  - SQL
+  - SQL
 - Python
 - Power BI
 - Heroku API
 
 ### Open-source Software Used
 
--  Kedro
--  Pandas
--  Pandas_profiling
--  Pycaret
--  fuzzywuzzy
--  sklearn
--  numpy
--  scipy
--  Flask
+- Kedro
+- Pandas
+- Pandas_profiling
+- Pycaret
+- fuzzywuzzy
+- sklearn
+- numpy
+- scipy
+- Flask
 
 ## S3
 
@@ -69,33 +70,33 @@ MER_NM,MER_ZIP,MONTH,MERCHANT_CATEGORY_XCD,CNT,SUM,SOURCE
 Kedro is an open-source Python framework for creating reproducible, maintainable, and modular data science code. The pipeline consists of nodes. Below shows the structure of our Kedro project.
 
 - conf
-    - base
-        - catalog.yml
-        - logging.yml
-        - parameters.yml
-    - local
-        - credentials.yml
+  - base
+    - catalog.yml
+      - logging.yml
+      - parameters.yml
+  - local
+    - credentials.yml
 - data
-    - raw
-    - intermediate
-    - primary
-    - feature
-    - model_input
-    - models
-    - model_output
-    - reporting
+  - raw
+  - intermediate
+  - primary
+  - feature
+  - model_input
+  - models
+  - model_output
+  - reporting
 - docs
 - logs
 - notebooks
 - src
-    - fis_inn
-        - pipelines
-            - data_processing
-                - nodes(.py)
-                - pipeline(.py)
-            - data_science
-                - nodes(.py)
-                - pipeline(.py)
+  - fis_inn
+    - pipelines
+      - data_processing
+        - nodes(.py)
+        - pipeline(.py)
+      - data_science
+        - nodes(.py)
+        - pipeline(.py)
 
 ### Data Processing pipeline
 
@@ -105,37 +106,37 @@ The pipeline is consisted of several nodes and functions to preprocess data and 
 
 Data preprocessing steps include:
 - Data cleaning
-    - remove rows contain a null value
+  - remove rows contain a null value
 - Remove Outliers
-    - label encoder
-    - calculate z score
-    - remove records with z score > 3
+  - label encoder
+  - calculate z score
+  - remove records with z score > 3
 - map/combine datasets
-    - combine issuer and merchant data with the population using zipcodes
+  - combine issuer and merchant data with the population using zipcodes
 - Fuzzy matching
-    - Merchant name standardization between two source datasets
+  - Merchant name standardization between two source datasets
 
 
 #### Data Science
 
 The Data science pipeline includes machine learning processing.
 - Data profiling
-    - data profiling provides initial visualization and overview of the preprocessed data
-        - descriptive statistics
-        - variables
-        - correlations
-        - missing values
+  - data profiling provides initial visualization and overview of the preprocessed data
+    - descriptive statistics
+      - variables
+      - correlations
+      - missing values
 - Cluster data
-    - Clustered data divides the population or data points into a number of groups such that data points in the same groups are more similar to other data points
+  - Clustered data divides the population or data points into a number of groups such that data points in the same groups are more similar to other data points
 - Anomaly data
-    - In data analysis, anomaly detection is the identification of rare items, events or observations which raise suspicions by differing significantly from the majority of the data
+  - In data analysis, anomaly detection is the identification of rare items, events or observations which raise suspicions by differing significantly from the majority of the data
 - Prophet prediction
-    - an open-source prediction package that provides high accuracy of predicted data
+  - an open-source prediction package that provides high accuracy of predicted data
 - Linear Regression
-    - split data
-    - train model
-    - evaluate model
-    - save a pickle file for the model trained
+  - split data
+  - train model
+  - evaluate model
+  - save a pickle file for the model trained
 
 
 #### Kedro Pipeline Diagram
