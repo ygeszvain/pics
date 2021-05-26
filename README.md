@@ -29,7 +29,7 @@ S3 -> Snowpipe -> Snowflake Table -> Kedro Data Engineering/Data Science Pipelin
 ### Technologies and Architecture  
 
 - Snowflake and Hadoop
-  - SQL
+  -SQL
 - Python
 - Power BI
 - Heroku API
